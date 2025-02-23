@@ -1,26 +1,28 @@
 const express = require('express');
 const router = express.Router();
 const quartoController = require('../controllers/quartoController');
+const validate = require('../middlewares/beanValidation');
+const quartoSchema = require('../validation/quartoValidation');
 
 // Rota para criar um quarto
-router.post('/quartos', quartoController.criarQuarto);
+router.post('/', validate(quartoSchema), quartoController.criarQuarto);
 
 // Rota para listar todos os quartos
-router.get('/quartos', quartoController.listarQuartos);
+router.get('/', quartoController.listarQuartos);
 
 // Rota para obter um quarto por ID
-router.get('/quartos/:id', quartoController.obterQuartoPorId);
+router.get('/:id', quartoController.obterQuartoPorId);
 
 // Rota para atualizar um quarto
-router.put('/quartos/:id', quartoController.atualizarQuarto);
+router.put('/:id', validate(quartoSchema), quartoController.atualizarQuarto);
 
 // Rota para deletar um quarto
-router.delete('/quartos/:id', quartoController.deletarQuarto);
+router.delete('/:id', quartoController.deletarQuarto);
 
 // Rota para buscar quartos disponíveis em um intervalo de datas
-router.get('/quartos/disponiveis', quartoController.buscarQuartosDisponiveis);
+router.get('/disponiveis', quartoController.buscarQuartosDisponiveis);
 
 // Rota para gerar um relatório de ocupação dos quartos
-router.get('/quartos/relatorio-ocupacao', quartoController.gerarRelatorioOcupacao);
+router.get('/relatorio-ocupacao', quartoController.gerarRelatorioOcupacao);
 
 module.exports = router;

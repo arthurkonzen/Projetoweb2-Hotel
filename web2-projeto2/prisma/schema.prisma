@@ -1,47 +1,46 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
-model User {
-  id        Int       @id @default(autoincrement())
-  username  String    @unique
-  email     String    @unique
-  password  String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  posts     Post[]
-  comments  Comment[]
+model Cliente {
+  id        Int      @id @default(autoincrement())
+  nome      String
+  email     String   @unique
+  telefone  String
+  reservas  Reserva[]
 }
 
-model Post {
-  id        Int       @id @default(autoincrement())
-  title     String
-  content   String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  userId    Int
-  user      User      @relation(fields: [userId], references: [id])
-  comments  Comment[]
+model Quarto {
+  id           Int      @id @default(autoincrement())
+  numero       Int      @unique
+  tipo         String
+  preco        Decimal
+  disponivel   Boolean  @default(true)
+  reservas     Reserva[]
 }
 
-model Comment {
-  id        Int       @id @default(autoincrement())
-  content   String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  postId    Int
-  post      Post      @relation(fields: [postId], references: [id])
-  userId    Int
-  user      User      @relation(fields: [userId], references: [id])
+model Reserva {
+  id         Int      @id @default(autoincrement())
+  checkIn    DateTime
+  checkOut   DateTime
+  clienteId  Int
+  cliente    Cliente  @relation(fields: [clienteId], references: [id])
+  quartoId   Int
+  quarto     Quarto   @relation(fields: [quartoId], references: [id])
+  hospedes   Hospede[]
+}
+
+model Hospede {
+  id         Int      @id @default(autoincrement())
+  nome       String
+  reservaId  Int
+  reserva    Reserva @relation(fields: [reservaId], references: [id])
+
+  @@unique([reservaId, id]) // Garante que cada reserva pode ter no máximo 3 hóspedes
 }

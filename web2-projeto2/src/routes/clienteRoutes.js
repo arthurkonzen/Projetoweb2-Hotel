@@ -1,20 +1,22 @@
 const express = require('express');
 const router = express.Router();
 const clienteController = require('../controllers/clienteController');
+const validate = require('../middlewares/beanValidation');
+const clienteSchema = require('../validation/clienteValidation');
 
 // Rota para criar um cliente
-router.post('/clientes', clienteController.criarCliente);
+router.post('/', validate(clienteSchema), clienteController.criarCliente);
 
 // Rota para listar todos os clientes
-router.get('/clientes', clienteController.listarClientes);
+router.get('/', clienteController.listarClientes);
 
 // Rota para obter um cliente por ID
-router.get('/clientes/:id', clienteController.obterClientePorId);
+router.get('/:id', clienteController.obterClientePorId);
 
 // Rota para atualizar um cliente
-router.put('/clientes/:id', clienteController.atualizarCliente);
+router.put('/:id', validate(clienteSchema), clienteController.atualizarCliente);
 
 // Rota para deletar um cliente
-router.delete('/clientes/:id', clienteController.deletarCliente);
+router.delete('/:id', clienteController.deletarCliente);
 
 module.exports = router;
