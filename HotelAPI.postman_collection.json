@@ -1,216 +1,289 @@
 {
-    "info": {
-      "_postman_id": "12345678-90ab-cdef-1234-567890abcdef",
-      "name": "Hotel API",
-      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-    },
-    "item": [
-      {
-        "name": "Clientes",
-        "item": [
-          {
-            "name": "Criar Cliente",
-            "request": {
-              "method": "POST",
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": {
-                "mode": "raw",
-                "raw": "{\n  \"nome\": \"João Silva\",\n  \"email\": \"joao@email.com\",\n  \"telefone\": \"(11) 99999-9999\"\n}"
-              },
-              "url": {
-                "raw": "{{baseUrl}}/clientes",
-                "host": ["{{baseUrl}}"],
-                "path": ["clientes"]
-              }
-            }
-          },
-          {
-            "name": "Listar Clientes",
-            "request": {
-              "method": "GET",
-              "url": {
-                "raw": "{{baseUrl}}/clientes",
-                "host": ["{{baseUrl}}"],
-                "path": ["clientes"]
-              }
-            }
-          },
-          {
-            "name": "Atualizar Cliente",
-            "request": {
-              "method": "PUT",
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": {
-                "mode": "raw",
-                "raw": "{\n  \"nome\": \"João da Silva\",\n  \"email\": \"joaosilva@email.com\"\n}"
-              },
-              "url": {
-                "raw": "{{baseUrl}}/clientes/1",
-                "host": ["{{baseUrl}}"],
-                "path": ["clientes", "1"]
-              }
-            }
-          },
-          {
-            "name": "Deletar Cliente",
-            "request": {
-              "method": "DELETE",
-              "url": {
-                "raw": "{{baseUrl}}/clientes/1",
-                "host": ["{{baseUrl}}"],
-                "path": ["clientes", "1"]
-              }
-            }
-          }
-        ]
-      },
-      {
-        "name": "Quartos",
-        "item": [
-          {
-            "name": "Criar Quarto",
-            "request": {
-              "method": "POST",
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": {
-                "mode": "raw",
-                "raw": "{\n  \"numero\": 101,\n  \"tipo\": \"Casal\",\n  \"preco\": 200.00,\n  \"disponivel\": true\n}"
-              },
-              "url": {
-                "raw": "{{baseUrl}}/quartos",
-                "host": ["{{baseUrl}}"],
-                "path": ["quartos"]
-              }
-            }
-          },
-          {
-            "name": "Listar Quartos",
-            "request": {
-              "method": "GET",
-              "url": {
-                "raw": "{{baseUrl}}/quartos",
-                "host": ["{{baseUrl}}"],
-                "path": ["quartos"]
-              }
-            }
-          },
-          {
-            "name": "Atualizar Quarto",
-            "request": {
-              "method": "PUT",
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": {
-                "mode": "raw",
-                "raw": "{\n  \"numero\": 101,\n  \"tipo\": \"Duplo\",\n  \"preco\": 250.00\n}"
-              },
-              "url": {
-                "raw": "{{baseUrl}}/quartos/1",
-                "host": ["{{baseUrl}}"],
-                "path": ["quartos", "1"]
-              }
-            }
-          },
-          {
-            "name": "Deletar Quarto",
-            "request": {
-              "method": "DELETE",
-              "url": {
-                "raw": "{{baseUrl}}/quartos/1",
-                "host": ["{{baseUrl}}"],
-                "path": ["quartos", "1"]
-              }
-            }
-          }
-        ]
-      },
-      {
-        "name": "Reservas",
-        "item": [
-          {
-            "name": "Criar Reserva",
-            "request": {
-              "method": "POST",
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": {
-                "mode": "raw",
-                "raw": "{\n  \"checkIn\": \"2025-03-01\",\n  \"checkOut\": \"2025-03-05\",\n  \"clienteId\": 1,\n  \"quartoId\": 1,\n  \"hospedes\": [\n    { \"nome\": \"Maria Silva\" },\n    { \"nome\": \"José Santos\" }\n  ]\n}"
-              },
-              "url": {
-                "raw": "{{baseUrl}}/reservas",
-                "host": ["{{baseUrl}}"],
-                "path": ["reservas"]
-              }
-            }
-          },
-          {
-            "name": "Listar Reservas",
-            "request": {
-              "method": "GET",
-              "url": {
-                "raw": "{{baseUrl}}/reservas",
-                "host": ["{{baseUrl}}"],
-                "path": ["reservas"]
-              }
-            }
-          },
-          {
-            "name": "Atualizar Reserva",
-            "request": {
-              "method": "PUT",
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": {
-                "mode": "raw",
-                "raw": "{\n  \"checkOut\": \"2025-03-06\"\n}"
-              },
-              "url": {
-                "raw": "{{baseUrl}}/reservas/1",
-                "host": ["{{baseUrl}}"],
-                "path": ["reservas", "1"]
-              }
-            }
-          },
-          {
-            "name": "Deletar Reserva",
-            "request": {
-              "method": "DELETE",
-              "url": {
-                "raw": "{{baseUrl}}/reservas/1",
-                "host": ["{{baseUrl}}"],
-                "path": ["reservas", "1"]
-              }
-            }
-          }
-        ]
-      }
-    ]
-  }  
+	"info": {
+		"_postman_id": "bcc2e2d2-243b-47a8-ba6c-8e921973e1c7",
+		"name": "Hotel API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28171313"
+	},
+	"item": [
+		{
+			"name": "Clientes",
+			"item": [
+				{
+					"name": "Criar Cliente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"João Silva\",\n  \"email\": \"joao@email.com\",\n  \"telefone\": \"(11) 99999-9999\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/clientes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Clientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clientes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Cliente",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"João da Silva\",\n  \"email\": \"joaosilva@email.com\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/clientes/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clientes/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Quartos",
+			"item": [
+				{
+					"name": "Criar Quarto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"numero\": 101,\n  \"tipo\": \"Casal\",\n  \"preco\": 200.00,\n  \"disponivel\": true\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/quartos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"quartos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Quartos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/quartos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"quartos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Quarto",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"numero\": 101,\n  \"tipo\": \"Duplo\",\n  \"preco\": 250.00\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/quartos/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"quartos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Quarto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/quartos/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"quartos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reservas",
+			"item": [
+				{
+					"name": "Criar Reserva",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"checkIn\": \"2025-03-01\",\n  \"checkOut\": \"2025-03-05\",\n  \"clienteId\": 1,\n  \"quartoId\": 1,\n  \"hospedes\": [\n    { \"nome\": \"Maria Silva\" },\n    { \"nome\": \"José Santos\" }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/reservas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reservas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Reservas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/reservas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reservas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Reserva",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"checkOut\": \"2025-03-06\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/reservas/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reservas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Reserva",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/reservas/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reservas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
